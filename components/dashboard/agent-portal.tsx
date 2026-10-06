@@ -1,0 +1,16 @@
+'use client';
+
+import Link from 'next/link';
+import { ArrowRight, CircleAlert, MapPin, ShieldCheck } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { useLocale } from '@/components/i18n/locale-provider';
+import { localize } from '@/lib/i18n';
+
+export function AgentHeader({ eyebrow, title, description, action }: { eyebrow: string; title: string; description: string; action?: { label: string; href: string } }) { const { locale } = useLocale(); return <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="mb-3 text-xs font-bold uppercase tracking-[.18em] text-[#0d766c]">{localize(locale, eyebrow)}</p><h1 className="text-3xl font-bold tracking-[-.04em] sm:text-4xl">{localize(locale, title)}</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-[#718988]">{localize(locale, description)}</p></div>{action && <Link href={action.href}><Button variant="outline">{localize(locale, action.label)}<ArrowRight size={15} /></Button></Link>}</div>; }
+export function AgentAuthState() { const { locale } = useLocale(); return <Card className="border-[#f2d4d4] bg-[#fff8f8] p-8"><div className="flex items-start gap-3"><CircleAlert className="mt-0.5 text-[#a84e58]" size={19} /><div><h2 className="font-bold">{localize(locale, 'Agent sign-in required')}</h2><p className="mt-2 text-sm leading-6 text-[#8d696d]">{localize(locale, 'Sign in with a verified collection-agent account to access assigned requests.')}</p></div></div></Card>; }
+export function AgentErrorState({ message = 'We could not load this collection-agent workspace.' }: { message?: string }) { const { locale } = useLocale(); return <Card className="border-[#f2d4d4] bg-[#fff8f8] p-8"><div className="flex items-start gap-3"><CircleAlert className="mt-0.5 text-[#a84e58]" size={19} /><div><h2 className="font-bold">{localize(locale, 'Something went wrong')}</h2><p className="mt-2 text-sm leading-6 text-[#8d696d]">{localize(locale, message)}</p></div></div></Card>; }
+export function AgentEmptyState({ title, description }: { title: string; description: string }) { const { locale } = useLocale(); return <Card className="border-dashed p-8 text-center"><h2 className="font-bold">{localize(locale, title)}</h2><p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#718988]">{localize(locale, description)}</p></Card>; }
+export function StatusBadge({ status }: { status: string }) { return <span className="rounded-full bg-[#eef2ff] px-3 py-1 text-[10px] font-bold uppercase tracking-[.1em] text-[#5865b8]">{status.replaceAll('_', ' ')}</span>; }
+export function MinimumNecessaryNotice() { const { locale } = useLocale(); return <div className="mt-6 flex gap-3 rounded-2xl border border-[#dce9e8] bg-white p-4 text-xs leading-5 text-[#718988]"><ShieldCheck className="shrink-0 text-[#0d766c]" size={17} /><p>{localize(locale, 'Only collection details necessary for the assigned visit are shown. Patient medical records and unrelated requests remain private.')}</p></div>; }
+export function LocationLine({ city, state }: { city: string | null; state: string | null }) { const { locale } = useLocale(); return <span className="inline-flex items-center gap-1"><MapPin size={13} />{[city, state].filter(Boolean).join(', ') || localize(locale, 'Location not provided')}</span>; }

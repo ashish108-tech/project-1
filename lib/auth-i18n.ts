@@ -1,0 +1,17 @@
+import type { Locale } from '@/lib/i18n';
+
+type AuthCopy = {
+  careNetwork: string; secureAccess: string; heroTitle: string; heroDescription: string; rlsProtected: string; humanCentered: string;
+  loginTitle: string; loginDescription: string; registerTitle: string; registerDescription: string; email: string; password: string; confirmPassword: string;
+  signIn: string; register: string; createAccount: string; noAccount: string; haveAccount: string; backHome: string; safetyNote: string;
+  invalidEmail: string; passwordLength: string; passwordMismatch: string; confirmationSent: string; genericError: string;
+};
+const copy: Record<Locale, AuthCopy> = {
+  en: {
+    careNetwork: 'AI care network', secureAccess: 'Secure access', heroTitle: 'Care coordination that keeps people at the center.', heroDescription: 'Sign in to access your role-specific workspace, private records, and the next step in your care journey.', rlsProtected: 'Protected by Supabase Auth and database RLS', humanCentered: 'Built for patients and care teams', loginTitle: 'Welcome back', loginDescription: 'Use your Supabase Auth account to continue to HealthConnect AI.', registerTitle: 'Create your account', registerDescription: 'Start with a secure patient account. Additional clinical roles require administrator approval.', email: 'Email address', password: 'Password', confirmPassword: 'Confirm password', signIn: 'Sign in', register: 'Create an account', createAccount: 'Create account', noAccount: 'New to HealthConnect AI?', haveAccount: 'Already have an account?', backHome: 'Back to home', safetyNote: 'Never share passwords or sensitive information outside the secure application. HealthConnect AI does not replace professional medical care.', invalidEmail: 'Enter a valid email address.', passwordLength: 'Password must be at least 8 characters.', passwordMismatch: 'Passwords do not match.', confirmationSent: 'Account created. Check your email to confirm your account, then sign in.', genericError: 'Authentication could not be completed. Please try again.',
+  },
+  hi: {
+    careNetwork: 'एआई स्वास्थ्य नेटवर्क', secureAccess: 'सुरक्षित पहुँच', heroTitle: 'ऐसा स्वास्थ्य समन्वय जिसमें लोग सबसे पहले हैं।', heroDescription: 'अपने भूमिका-आधारित कार्यक्षेत्र, निजी रिकॉर्ड और स्वास्थ्य यात्रा के अगले कदम तक पहुँचने के लिए साइन इन करें।', rlsProtected: 'Supabase Auth और डेटाबेस RLS से सुरक्षित', humanCentered: 'मरीज़ों और स्वास्थ्य टीमों के लिए बनाया गया', loginTitle: 'वापस स्वागत है', loginDescription: 'HealthConnect AI जारी रखने के लिए अपने Supabase Auth खाते का उपयोग करें।', registerTitle: 'अपना खाता बनाएँ', registerDescription: 'सुरक्षित मरीज़ खाते से शुरुआत करें। अन्य क्लिनिकल भूमिकाओं के लिए एडमिन की स्वीकृति आवश्यक है।', email: 'ईमेल पता', password: 'पासवर्ड', confirmPassword: 'पासवर्ड की पुष्टि करें', signIn: 'साइन इन', register: 'खाता बनाएँ', createAccount: 'खाता बनाएँ', noAccount: 'HealthConnect AI पर नए हैं?', haveAccount: 'क्या आपका खाता पहले से है?', backHome: 'होम पर वापस जाएँ', safetyNote: 'सुरक्षित ऐप के बाहर पासवर्ड या संवेदनशील जानकारी साझा न करें। HealthConnect AI पेशेवर चिकित्सा देखभाल का विकल्प नहीं है।', invalidEmail: 'मान्य ईमेल पता दर्ज करें।', passwordLength: 'पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।', passwordMismatch: 'पासवर्ड मेल नहीं खाते।', confirmationSent: 'खाता बन गया है। ईमेल से खाते की पुष्टि करें, फिर साइन इन करें।', genericError: 'प्रमाणीकरण पूरा नहीं हो सका। कृपया फिर प्रयास करें।',
+  },
+};
+export function authText(locale: Locale) { return copy[locale]; }
